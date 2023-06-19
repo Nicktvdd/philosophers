@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:09:50 by rrask             #+#    #+#             */
-/*   Updated: 2023/06/19 13:12:18 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:39:10 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	philos_join(t_philo *philos);
 void	philos_spawn(t_philo *philos, pthread_mutex_t *gate);
 void	philos_init(t_philo *philos, t_attr *attrib, t_mutex *mutex);
 void	*philo_run(void *this);
-int	governor(t_philo *philos, t_attr *attr, pthread_mutex_t	*forks);
+int		governor(t_philo *philos, t_attr *attr, pthread_mutex_t	*forks);
+int		dead_philo_check(t_philo *philos, t_attr *attr);
 
 /* eatsleepdierepeat.c */
 void	print_state(size_t start_time, int philo_num, char *string);

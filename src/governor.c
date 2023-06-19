@@ -6,13 +6,13 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:51:33 by rrask             #+#    #+#             */
-/*   Updated: 2023/06/19 13:30:33 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:38:03 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "philosophers.h"
 
-static int	dead_philo_check(t_philo *philos, t_attr *attr)
+int	dead_philo_check(t_philo *philos, t_attr *attr)
 {
 	int i;
 

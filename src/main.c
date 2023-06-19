@@ -46,11 +46,7 @@ int	main(int argc, char **argv)
 	mutex_init(attributes.philo_num, &mutex);
 	philos_init(philos, &attributes, &mutex);
 	while (1)
-	{
 		philos_spawn(philos, &mutex.gate);
-		if (governor(philos, &attributes, mutex.forks) == 0)
-			break;
-	}
 	// loop the philos to check if philos have died
 	philos_join(philos);
 	mutex_destroy(attributes.philo_num, &mutex);

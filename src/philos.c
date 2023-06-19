@@ -20,37 +20,40 @@ void	*philo_run(void *this)
 
 		pthread_mutex_lock(philo->gate);
 		pthread_mutex_unlock(philo->gate);
-		while (1){
-		if (philo->attr->times_must_eat)
+		while (1)
 		{
-			if (philo->times_eaten == philo->attr->times_must_eat)
+			if (philo->attr->times_must_eat)
 			{
-				printf("Philosopher %d has eaten enough.\n", philo->id);
+				if (philo->times_eaten == philo->attr->times_must_eat)
+				{
+					printf("Philosopher %d has eaten enough.\n", philo->id);
+					return (0);
+			}
+			if (is_dead(philo->last_supper, philo->attr->time_to_die))
 				return (0);
-		}
-		}
-		if (philo->id % 2 == 0)
-		{
-			pthread_mutex_lock(philo->l_fork);
-			pthread_mutex_lock(philo->r_fork);
-			eating(philo, philo->attr->time_to_eat);
-			pthread_mutex_unlock(philo->l_fork);
-			pthread_mutex_unlock(philo->r_fork);
-			// printf("I am philosopher %d, I am even.\n", philo->id);
-			//lock the right fork first.
-		}
-		else
-		{
-			pthread_mutex_lock(philo->r_fork);
-			pthread_mutex_lock(philo->l_fork);
-			eating(philo, philo->attr->time_to_eat);
-			pthread_mutex_unlock(philo->r_fork);
-			pthread_mutex_unlock(philo->l_fork);
-			// printf("I am philosopher %d, I am odd.\n", philo->id);
-			//Lock the left fork first.
-		}
-		// sleep
-		sleeping(philo, philo->attr->time_to_sleep);
+			}
+			if (philo->id % 2 == 0)
+			{
+				pthread_mutex_lock(philo->l_fork);
+				pthread_mutex_lock(philo->r_fork);
+				eating(philo, philo->attr->time_to_eat);
+				pthread_mutex_unlock(philo->l_fork);
+				pthread_mutex_unlock(philo->r_fork);
+				// printf("I am philosopher %d, I am even.\n", philo->id);
+				//lock the right fork first.
+			}
+			else
+			{
+				pthread_mutex_lock(philo->r_fork);
+				pthread_mutex_lock(philo->l_fork);
+				eating(philo, philo->attr->time_to_eat);
+				pthread_mutex_unlock(philo->r_fork);
+				pthread_mutex_unlock(philo->l_fork);
+				// printf("I am philosopher %d, I am odd.\n", philo->id);
+				//Lock the left fork first.
+			}
+			// sleep
+			sleeping(philo, philo->attr->time_to_sleep);
 		}
 	return (this);
 }
