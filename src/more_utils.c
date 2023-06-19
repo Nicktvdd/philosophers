@@ -1,39 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   forks.c                                            :+:      :+:    :+:   */
+/*   more_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rrask <rrask@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 16:19:57 by rrask             #+#    #+#             */
-/*   Updated: 2023/06/12 16:24:41 by rrask            ###   ########.fr       */
+/*   Created: 2023/06/16 13:46:46 by nvan-den          #+#    #+#             */
+/*   Updated: 2023/06/16 14:12:35 by rrask            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "philosophers.h"
+#include "philosophers.h"
 
-void	forks_init(int num_philos, pthread_mutex_t	*forks)
+void	ft_putchar(char c)
 {
-	int i;
+	write(1, &c, 1);
+}
+
+void	ft_putstr(char *string)
+{
+	int	i;
 
 	i = 0;
-	while (i < num_philos)
+	if (string == NULL)
+		return ;
+	while (string[i])
 	{
-		if (pthread_mutex_init(forks + i, NULL) != 0)
-			error_handler("No philosophers here.");
+		ft_putchar(string[i]);
 		i++;
 	}
 }
 
-void	forks_destroy(int num_philos, pthread_mutex_t *forks)
+void	ft_putnbr(int n)
 {
-	int i;
-
-	i = 0;
-	while (i < num_philos)
+	if (n < 0)
 	{
-		if (pthread_mutex_destroy(forks + i) != 0)
-			error_handler("Mutex is too powerful, we have failed in vanquishing it...");
-		i++;
+		ft_putchar('-');
+		if (n <= -2147483648)
+		{
+			ft_putchar('2');
+			n = n % -1000000000;
+		}
+			n = n * -1;
 	}
+	if (n / 10)
+	{
+		ft_putnbr(n / 10);
+	}
+	ft_putchar(n % 10 + '0');
 }
