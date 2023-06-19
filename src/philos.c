@@ -17,32 +17,33 @@ void	*philo_run(void *this)
 	/* Start the philosopher logic here (Grab forks if odd number,
 		eat if two forks, die if death is due, wait if only one fork.) */
 	t_philo	*philo = (t_philo *)this;
-
-	pthread_mutex_lock(philo->gate);
-	pthread_mutex_unlock(philo->gate);
-	if (philo->id % 2 == 0)
+	while (1)
 	{
-		pthread_mutex_lock(philo->l_fork);
-		pthread_mutex_lock(philo->r_fork);
-		eating(philo, philo->attr->time_to_eat);
-		pthread_mutex_unlock(philo->l_fork);
-		pthread_mutex_unlock(philo->r_fork);
-		// printf("I am philosopher %d, I am even.\n", philo->id);
-		//lock the right fork first.
+		pthread_mutex_lock(philo->gate);
+		pthread_mutex_unlock(philo->gate);
+		if (philo->id % 2 == 0)
+		{
+			pthread_mutex_lock(philo->l_fork);
+			pthread_mutex_lock(philo->r_fork);
+			eating(philo, philo->attr->time_to_eat);
+			pthread_mutex_unlock(philo->l_fork);
+			pthread_mutex_unlock(philo->r_fork);
+			// printf("I am philosopher %d, I am even.\n", philo->id);
+			//lock the right fork first.
+		}
+		else
+		{
+			pthread_mutex_lock(philo->r_fork);
+			pthread_mutex_lock(philo->l_fork);
+			eating(philo, philo->attr->time_to_eat);
+			pthread_mutex_unlock(philo->r_fork);
+			pthread_mutex_unlock(philo->l_fork);
+			// printf("I am philosopher %d, I am odd.\n", philo->id);
+			//Lock the left fork first.
+		}
+		// sleep
+		sleeping(philo, philo->attr->time_to_sleep);
 	}
-	else
-	{
-		pthread_mutex_lock(philo->r_fork);
-		pthread_mutex_lock(philo->l_fork);
-		eating(philo, philo->attr->time_to_eat);
-		pthread_mutex_unlock(philo->r_fork);
-		pthread_mutex_unlock(philo->l_fork);
-		// printf("I am philosopher %d, I am odd.\n", philo->id);
-		//Lock the left fork first.
-	}
-	// sleep
-	sleeping(philo, philo->attr->time_to_sleep);
-
 	return (this);
 }
 	//if(start_time - philos[i].last_supper >= time_to_die)	condition of dying
