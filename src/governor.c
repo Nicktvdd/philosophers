@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:51:33 by rrask             #+#    #+#             */
-/*   Updated: 2023/06/19 13:12:30 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:30:33 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ int	governor(t_philo *philos, t_attr *attr, pthread_mutex_t	*forks)
 			}
 		}
 	}
+	return (0);
 }

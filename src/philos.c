@@ -17,10 +17,18 @@ void	*philo_run(void *this)
 	/* Start the philosopher logic here (Grab forks if odd number,
 		eat if two forks, die if death is due, wait if only one fork.) */
 	t_philo	*philo = (t_philo *)this;
-	while (1)
-	{
+
 		pthread_mutex_lock(philo->gate);
 		pthread_mutex_unlock(philo->gate);
+		while (1){
+		if (philo->attr->times_must_eat)
+		{
+			if (philo->times_eaten == philo->attr->times_must_eat)
+			{
+				printf("Philosopher %d has eaten enough.\n", philo->id);
+				return (0);
+		}
+		}
 		if (philo->id % 2 == 0)
 		{
 			pthread_mutex_lock(philo->l_fork);
@@ -43,7 +51,7 @@ void	*philo_run(void *this)
 		}
 		// sleep
 		sleeping(philo, philo->attr->time_to_sleep);
-	}
+		}
 	return (this);
 }
 	//if(start_time - philos[i].last_supper >= time_to_die)	condition of dying

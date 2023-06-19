@@ -45,8 +45,12 @@ int	main(int argc, char **argv)
 	attr_set(&attributes, argc, argv);
 	mutex_init(attributes.philo_num, &mutex);
 	philos_init(philos, &attributes, &mutex);
-	philos_spawn(philos, &mutex.gate);
-	governor(philos, &attributes, mutex.forks);
+	while (1)
+	{
+		philos_spawn(philos, &mutex.gate);
+		if (governor(philos, &attributes, mutex.forks) == 0)
+			break;
+	}
 	// loop the philos to check if philos have died
 	philos_join(philos);
 	mutex_destroy(attributes.philo_num, &mutex);
