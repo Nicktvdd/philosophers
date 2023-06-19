@@ -56,7 +56,7 @@ int	is_dead(t_philo *philo, size_t time_to_die)
 void	eating(t_philo *philo, size_t time_to_eat)
 {
 	philo->last_supper = get_time_ms();
-	printf("Times eaten of %i: %i\n",philo->id, philo->times_eaten);
+	printf("Philo %i has eaten %i times\n",philo->id, philo->times_eaten);
 	print_state(philo->attr->start_time, philo->id, "is eating\n");
 	hit_the_hay(time_to_eat);
 	philo->times_eaten += 1;

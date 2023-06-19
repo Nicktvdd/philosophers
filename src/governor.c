@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:51:33 by rrask             #+#    #+#             */
-/*   Updated: 2023/06/19 15:18:41 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:03:11 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	dead_philo_check(t_philo *philos, t_attr *attr)
 	{
 		if (is_dead(philos, attr->time_to_die) == 1)
 		{
-			/* print_state(philo->attr->start_time, philo->id, "is eating\n"); */
 			printf("%lu ", get_time_ms() - philos[i].attr->start_time);	
 			printf("Philosopher %d is dead.\n", philos[i].id);
 			return (1);
