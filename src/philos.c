@@ -41,6 +41,7 @@ void	*philo_run(void *this)
 		//Lock the left fork first.
 	}
 	// sleep
+	sleeping(philo, philo->attr->time_to_sleep);
 
 	return (this);
 }

@@ -25,13 +25,13 @@ void	print_state(size_t start_time, int philo_num, char *string)
 	size_t lapsed_time;
 
 	lapsed_time = get_time_ms() - start_time;
-	ft_putnbr(lapsed_time);
+	printf("%zu philosopher %d %s", lapsed_time, philo_num, string);
+/* 	ft_putnbr(lapsed_time);
 	ft_putchar(' ');
 	ft_putstr("Philosopher ");
 	ft_putnbr(philo_num);
 	ft_putchar(' ');
-	ft_putstr(string);
-	ft_putchar('\n');
+	ft_putstr(string); */
 }
 
 int	hit_the_hay(size_t	sleepytime)
@@ -54,21 +54,21 @@ int	is_dead(size_t last_supper, size_t time_to_die)
 void	eating(t_philo *philo, size_t time_to_eat)
 {
 	philo->last_supper = get_time_ms();
-	print_state(philo->attr->start_time, philo->id, "is eating");
+	print_state(philo->attr->start_time, philo->id, "is eating\n");
 	hit_the_hay(time_to_eat);
 	philo->times_eaten += 1;
 }
 
-void	sleeping(t_attr philo, size_t time_to_sleep)
+void	sleeping(t_philo *philo, size_t time_to_sleep)
 {
-	print_state(philo.start_time, philo.philo_num, "is sleeping");
+	print_state(philo->attr->start_time, philo->id, "is sleeping\n");
 	hit_the_hay(time_to_sleep);
 }
 
-void	thinking(t_attr philo)
+void	thinking(t_philo *philo)
 {
-	print_state(philo.start_time, philo.philo_num, "is thinking");
-	
+	print_state(philo->attr->start_time, philo->id, "is thinking\n");
+	hit_the_hay(1);
 }
 /* int	eating(int time_to_eat)
 {

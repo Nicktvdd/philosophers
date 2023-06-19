@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrask <rrask@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:09:50 by rrask             #+#    #+#             */
-/*   Updated: 2023/06/16 16:39:36 by rrask            ###   ########.fr       */
+/*   Updated: 2023/06/19 11:58:09 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	print_state(size_t start_time, int philo_num, char *string);
 int		hit_the_hay(size_t	sleepytime);
 int		is_dead(size_t last_supper, size_t time_to_die);
 void	eating(t_philo *philo, size_t time_to_eat);
-void	sleeping(t_attr philo, size_t time_to_sleep);
-void	thinking(t_attr philo);
+void	sleeping(t_philo *philo, size_t time_to_sleep);
+void	thinking(t_philo *philo);
 size_t	get_time_ms(void);
 
 /*utils.c*/

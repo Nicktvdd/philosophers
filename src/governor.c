@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   governor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrask <rrask@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:51:33 by rrask             #+#    #+#             */
-/*   Updated: 2023/06/16 16:37:53 by rrask            ###   ########.fr       */
+/*   Updated: 2023/06/19 11:46:46 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static	void dead_philo_check(t_philo *philos, t_attr *attr)
 	{
 		if (is_dead(philos[i].last_supper, attr->time_to_die) == 1)
 		{
+			/* print_state(philo->attr->start_time, philo->id, "is eating\n"); */
 			printf("%lu ", get_time_ms() - philos[i].attr->start_time);	
 			printf("Philosopher %d is dead.\n", philos[i].id);
 			exit(0); // CAN"T USE THAT NO NO NO
