@@ -43,10 +43,10 @@ int	hit_the_hay(size_t	sleepytime)
 		usleep(500);
 	return (0);
 }
-int	is_dead(size_t last_supper, size_t time_to_die)
+int	is_dead(t_philo *philo, size_t time_to_die)
 {
 	// last_supper is time they last ate, stored in attr?
-	if ((get_time_ms() - last_supper) > time_to_die)
+	if ((get_time_ms() - philo->last_supper) > time_to_die)
 		return (1);
 	return (0);
 }
