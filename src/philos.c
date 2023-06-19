@@ -29,7 +29,10 @@ void	*philo_run(void *this)
 					printf("Philosopher %d has eaten enough.\n", philo->id);
 					return (0);
 				}
+			}
 			if (is_dead(philo, philo->attr->time_to_die))
+			{
+				
 				return (0);
 			}
 			if (philo->id % 2 == 0)

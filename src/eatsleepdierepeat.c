@@ -45,7 +45,7 @@ int	hit_the_hay(size_t	sleepytime)
 }
 int	is_dead(t_philo *philo, size_t time_to_die)
 {
-	if ((get_time_ms() - philo->last_supper) >= time_to_die)
+	if (philo->attr->start_time - philo->last_supper >= time_to_die)
 	{
 		print_state(philo->attr->start_time, philo->id, "died\n");
 		return (1);
