@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 	attr_set(&attributes, argc, argv);
 	mutex_init(attributes.philo_num, &mutex);
 	philos_init(philos, &attributes, &mutex);
-	while (1)
+	//while (1)
 		philos_spawn(philos, &mutex.gate);
 	// loop the philos to check if philos have died
 	philos_join(philos);
