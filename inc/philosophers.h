@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:09:50 by rrask             #+#    #+#             */
-/*   Updated: 2023/06/19 14:55:12 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/12 14:04:32 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,29 +64,28 @@ typedef struct s_mutex
 void	philos_join(t_philo *philos);
 void	philos_spawn(t_philo *philos, pthread_mutex_t *gate);
 void	philos_init(t_philo *philos, t_attr *attrib, t_mutex *mutex);
-void	*philo_run(void *this);
-int		governor(t_philo *philos, t_attr *attr, pthread_mutex_t	*forks);
-int		dead_philo_check(t_philo *philos, t_attr *attr);
 
-/* eatsleepdierepeat.c */
-void	print_state(size_t start_time, int philo_num, char *string);
+/*governor.c*/
+int		governor(t_philo *philos, t_attr *attr, pthread_mutex_t	*forks);
+
+/*philo_run.c*/
+void	*philo_run(void *this);
+
+/* eatsleep.c */
+void	print_state(t_philo philo, char *string);
 int		hit_the_hay(size_t	sleepytime);
 int		is_dead(t_philo *philo, size_t time_to_die);
 void	eating(t_philo *philo, size_t time_to_eat);
 void	sleeping(t_philo *philo, size_t time_to_sleep);
 void	thinking(t_philo *philo);
+
+/*dierepeat.c*/
 size_t	get_time_ms(void);
 
 /*utils.c*/
-int			ft_atoi(const char *str);
-int			ft_isdigit(int c);
-void		ft_putchar(char c);
-void		ft_putstr(char *string);
-void		ft_putnbr(int n);
 // static void	ft_sub(char *str, int len, int n);
 // static int	ft_len(int n, int *minus);
 // char		*ft_itoa(int n);
-
 
 /*errors.c*/
 void	error_handler(char *str);
@@ -96,5 +95,7 @@ void	mutex_init(int num_philos, t_mutex *mutex);
 void	mutex_destroy(int num_philos, t_mutex *mutex);
 // void	forks_init(int num_philos, pthread_mutex_t	*forks);
 // void	forks_destroy(int num_philos, pthread_mutex_t *forks);
+
+int		dead_philo_check(t_philo *philos, t_attr *attr);
 
 #endif
