@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:38:36 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/12 14:57:21 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:36:39 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ static void	get_forked(t_philo *philo)
 
 void	*philo_run(void *this)
 {
-	/* Start the philosopher logic here (Grab forks if odd number,
-		eat if two forks, die if death is due, wait if only one fork.) */
 	t_philo *philo = (t_philo *)this;
 
 	pthread_mutex_lock(philo->gate);
