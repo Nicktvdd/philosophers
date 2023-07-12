@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:22:23 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/12 14:43:47 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:23:52 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_state(t_philo *philo, char *string)
 	pthread_mutex_lock(philo->print);
 	if (is_dead(philo))
 	{
-		pthread_mute_unlock(philo->print);
+		pthread_mutex_unlock(philo->print);
 		return ;
 	}
 	lapsed_time = get_time_ms() - philo->attr->start_time;
@@ -33,6 +33,6 @@ void	print_death(t_philo philo)
 	
 	pthread_mutex_lock(philo.print);
 	lapsed_time = get_time_ms() - philo.attr->start_time;
-	printf("%zu philosopher %d %s\n", lapsed_time, philo->id, "died");
+	printf("%zu philosopher %d %s\n", lapsed_time, philo.id, "died");
 	pthread_mutex_unlock(philo.print);
 }

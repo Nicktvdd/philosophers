@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "philosophers.h"
+#include "philosophers.h"
 
 void	philos_init(t_philo *philos, t_attr *attrib, t_mutex *mutex) // change to use t_mutex  pthread_mutex_t *forks
 {

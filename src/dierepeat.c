@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:01:54 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/12 14:05:36 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:56:22 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ size_t	get_time_ms(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-int	is_dead(t_philo *philo, size_t time_to_die)
+int	is_dead(t_philo *philo)
 {
 	pthread_mutex_lock(philo->death);
-	if (philo->attr->start_time - philo->last_supper >= time_to_die)
+	if (philo->attr->start_time - philo->last_supper >= philo->attr->time_to_die)
 	{
 		pthread_mutex_unlock(philo->death);
 		print_state(philo, "died\n");

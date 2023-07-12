@@ -41,15 +41,17 @@ int	main(int argc, char **argv)
 	if (argc < ARG_MIN || argc > ARG_MAX)
 	{
 		printf("Try again, punk.\n");
-		return (0);
+		return (1);
 	}
-	attr_set(&attributes, argc, argv);
-	mutex_init(attributes.philo_num, &mutex);
+	if (attr_set(&attributes, argc, argv))
+		return (2);
+	if (mutex_init(attributes.philo_num, &mutex))
+		return (3);
 	philos_init(philos, &attributes, &mutex);
-	//while (1)
-		philos_spawn(philos, &mutex.gate);
-	// loop the philos to check if philos have died
+	philos_spawn(philos, &mutex.gate);
+	governor(philos, philos->attr);
 	philos_join(philos);
-	mutex_destroy(attributes.philo_num, &mutex);
+	if (mutex_destroy(attributes.philo_num, &mutex))
+		return (4);
 	return (0);
 }
