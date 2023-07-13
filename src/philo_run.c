@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:38:36 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/13 13:13:53 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/13 14:55:59 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ static void	get_forked(t_philo *philo)
 
 void	*philo_run(void *this)
 {
-	t_philo *philo = (t_philo *)this;
+	t_philo *philo;
+	
+	philo = (t_philo *)this;
 
 	pthread_mutex_lock(philo->gate);
 	pthread_mutex_unlock(philo->gate);
 	if (philo->id % 2 == 0)
 		hit_the_hay(philo, 10);
-
 	while (1)
 	{
 		if (is_dead(philo))

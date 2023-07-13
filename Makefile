@@ -17,7 +17,7 @@ DEP = $(OBJ:.o=.d)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	cc $(CFLAGS) $(OBJ) -o $(NAME)
+	cc $(CFLAGS) $(OBJ) -o $(NAME) -fsanitize=thread -g
 
 $(OBJ_DIR)/%.o: %.c
 	mkdir -p $(OBJ_DIR)

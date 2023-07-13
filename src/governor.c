@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:51:33 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/13 13:36:19 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:54:38 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	dead_philo_check(t_philo *philos, t_attr *attr)
 	while (i < attr->philo_num)
 	{
 		pthread_mutex_lock(philos[i].death);
-			printf("hi\n");
 		if (is_dead(&philos[i]) == 1)
 		{
 			philos[i].is_dead = 1;
@@ -59,7 +58,6 @@ int	governor(t_philo *philos, t_attr *attr)
 	{
 		if (dead_philo_check(philos, attr))
 			return (1);
-			printf("hi\n");
 		if (attr->times_must_eat > 0)
 		{
 			pthread_mutex_lock(philos[i].death);
