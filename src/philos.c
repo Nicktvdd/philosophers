@@ -27,6 +27,7 @@ void	philos_init(t_philo *philos, t_attr *attrib, t_mutex *mutex) // change to u
 			philos[i].r_fork = &mutex->forks[i + 1];
 		philos[i].gate = &mutex->gate;
 		philos[i].death = &mutex->deaths[i];
+		philos[i].print = &mutex->print;
 		philos[i].id = i + 1;
 		philos[i].is_dead = 0;
 		philos[i].times_eaten = 0;
