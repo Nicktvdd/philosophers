@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:51:33 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/13 13:54:38 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:27:38 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,18 @@ int	dead_philo_check(t_philo *philos, t_attr *attr)
 	while (i < attr->philo_num)
 	{
 		pthread_mutex_lock(philos[i].death);
-		if (is_dead(&philos[i]) == 1)
+		if (&philos[i])
 		{
-			philos[i].is_dead = 1;
-			pthread_mutex_unlock(philos[i].death);
-			kill_all(philos);
-			printf("%lu ", get_time_ms() - philos[i].attr->start_time);	
-			printf("Philosopher %d is dead.\n", philos[i].id);
-			return (1);
+			if (is_dead(&philos[i]) == 1)
+			{
+				printf("dead philo!\n");//
+				philos[i].is_dead = 1;
+				pthread_mutex_unlock(philos[i].death);
+				kill_all(philos);
+				printf("%lu ", get_time_ms() - philos[i].attr->start_time);	
+				printf("Philosopher %d is dead.\n", philos[i].id);
+				return (1);
+			}
 		}
 		pthread_mutex_unlock(philos[i].death);
 		i++;
@@ -54,6 +58,7 @@ int	governor(t_philo *philos, t_attr *attr)
 	int i;
 
 	i = 0;
+	usleep(1000);//
 	while (1)
 	{
 		if (dead_philo_check(philos, attr))

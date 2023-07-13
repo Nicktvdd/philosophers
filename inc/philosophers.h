@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:09:50 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/13 13:09:18 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:59:24 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int		governor(t_philo *philos, t_attr *attr);
 void	*philo_run(void *this);
 
 /* eatsleep.c */
-void	print_state(t_philo *philo, char *string);
 int		hit_the_hay(t_philo *philo, size_t	sleepytime);
 void	eating(t_philo *philo, size_t time_to_eat);
 void	sleeping(t_philo *philo, size_t time_to_sleep);
@@ -84,5 +83,9 @@ void	error_handler(char *str);
 /*mutex.c*/
 int		mutex_init(int num_philos, t_mutex *mutex);
 int		mutex_destroy(int num_philos, t_mutex *mutex);
+
+/*printing.c*/
+void	print_death(t_philo philo);
+void	print_state(t_philo *philo, char *string);
 
 #endif

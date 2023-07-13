@@ -13,11 +13,11 @@ SRC = main.c mutex.c errors.c utils.c printing.c philos.c governor.c eatsleep.c 
 
 DEP = $(OBJ:.o=.d)
 
-####
+#### -fsanitize=thread -g
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	cc $(CFLAGS) $(OBJ) -o $(NAME) -fsanitize=thread -g
+	cc $(CFLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.c
 	mkdir -p $(OBJ_DIR)

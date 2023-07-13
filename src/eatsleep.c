@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:01:59 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/12 14:43:25 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:54:20 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ void	thinking(t_philo *philo)
 	if (is_dead(philo))
 		return ;
 	print_state(philo, "is thinking\n");
-	hit_the_hay(philo, 1);
+	//hit_the_hay(philo, 1);
 }

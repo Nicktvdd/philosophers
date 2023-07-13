@@ -22,7 +22,7 @@ int	attr_set(t_attr *attr, int argc, char **argv)
 	attr->times_must_eat = -1;
 	if (argc == ARG_MAX)
 		attr->times_must_eat = ft_atoi(argv[5]);
-	attr->start_time = get_time_ms();
+	
 	if (attr->philo_num <= 0 || attr->time_to_die <= 0 || attr->time_to_eat <= 0
 		|| attr -> time_to_sleep <= 0)
 	{

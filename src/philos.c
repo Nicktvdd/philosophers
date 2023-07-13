@@ -31,7 +31,7 @@ void	philos_init(t_philo *philos, t_attr *attrib, t_mutex *mutex) // change to u
 		philos[i].id = i + 1;
 		philos[i].is_dead = 0;
 		philos[i].times_eaten = 0;
-		philos[i].last_supper = get_time_ms();
+
 		i++;
 	}
 }
@@ -43,8 +43,11 @@ void	philos_spawn(t_philo *philos, pthread_mutex_t *gate)
 	(void)gate;
 	i = 0;
 	pthread_mutex_lock(gate);
+	philos->attr->start_time = get_time_ms();
 	while (i < philos->attr->philo_num)
 	{
+		thinking(philos + i);
+		philos[i].last_supper = philos->attr->start_time;
 		pthread_create(&philos[i].thread, NULL, &philo_run, philos + i);
 		i++;
 	}

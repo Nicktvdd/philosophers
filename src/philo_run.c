@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:38:36 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/13 14:55:59 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:26:10 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,16 @@ void	*philo_run(void *this)
 
 	pthread_mutex_lock(philo->gate);
 	pthread_mutex_unlock(philo->gate);
-	if (philo->id % 2 == 0)
-		hit_the_hay(philo, 10);
+	philo->last_supper = philo->attr->start_time;//
+	printf("last supper %zu\n", philo->last_supper);
+	//think here
+ 	if (philo->id % 2 == 0)
+		hit_the_hay(philo, philo->attr->time_to_eat);
 	while (1)
 	{
 		if (is_dead(philo))
 			return (this);
+		printf("hi from %i\n", philo->id);//
 		get_forked(philo);
 		sleeping(philo, philo->attr->time_to_sleep);
 		thinking(philo);
