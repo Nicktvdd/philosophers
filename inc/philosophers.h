@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:09:50 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/12 16:31:38 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:09:18 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	*philo_run(void *this);
 /* eatsleep.c */
 void	print_state(t_philo *philo, char *string);
 int		hit_the_hay(t_philo *philo, size_t	sleepytime);
-int		is_dead(t_philo *philo);
 void	eating(t_philo *philo, size_t time_to_eat);
 void	sleeping(t_philo *philo, size_t time_to_sleep);
 void	thinking(t_philo *philo);
