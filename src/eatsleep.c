@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:01:59 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/13 15:54:20 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:21:53 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	eat_the_hay(size_t	eating_time)
 void	eating(t_philo *philo, size_t time_to_eat)
 {
 	pthread_mutex_lock(philo->death);
-	if (philo->is_dead)
+	if (philo->died)
 	{
 		pthread_mutex_unlock(philo->death);
 		return ;
@@ -60,8 +60,8 @@ void	sleeping(t_philo *philo, size_t time_to_sleep)
 
 void	thinking(t_philo *philo)
 {
-	if (is_dead(philo))
-		return ;
+/* 	if (is_dead(philo))
+		return ; */
 	print_state(philo, "is thinking\n");
 	//hit_the_hay(philo, 1);
 }

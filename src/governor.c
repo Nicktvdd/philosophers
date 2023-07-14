@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:51:33 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/13 16:27:38 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:22:43 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	kill_all(t_philo *philos)
 	while (i < philos[0].attr->philo_num)
 	{
 		pthread_mutex_lock(philos[i].death);
-		philos[i].is_dead = 1;
+		philos[i].died = 1;
 		pthread_mutex_unlock(philos[i].death);
 		i++;
 	}
@@ -34,12 +34,12 @@ int	dead_philo_check(t_philo *philos, t_attr *attr)
 	while (i < attr->philo_num)
 	{
 		pthread_mutex_lock(philos[i].death);
-		if (&philos[i])
+		if (&philos[i]) // always true??
 		{
-			if (is_dead(&philos[i]) == 1)
+			if (is_dead(&philos[i]))
 			{
 				printf("dead philo!\n");//
-				philos[i].is_dead = 1;
+				philos[i].died = 1;
 				pthread_mutex_unlock(philos[i].death);
 				kill_all(philos);
 				printf("%lu ", get_time_ms() - philos[i].attr->start_time);	

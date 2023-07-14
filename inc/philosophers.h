@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:09:50 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/13 15:59:24 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:19:57 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_attr
 typedef struct s_philo
 {
 	unsigned int	id;
-	int				is_dead;
+	int				died;
 	int				times_eaten;
 	pthread_t		thread;
 	pthread_mutex_t	*r_fork;
