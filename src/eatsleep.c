@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:01:59 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/14 13:21:53 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:37:26 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,14 @@ void	eating(t_philo *philo, size_t time_to_eat)
 	pthread_mutex_unlock(philo->death);
 	print_state(philo, "is eating");
 	eat_the_hay(time_to_eat);
-	printf("Philo %i has eaten %i times\n",philo->id, philo->times_eaten);
-	//ft_usleep(philo, time_to_eat);
+	printf("%zu Philo %i has eaten %i times\n", get_time_ms() - philo->attr->start_time, philo->id, philo->times_eaten);
 }
 
 void	sleeping(t_philo *philo, size_t time_to_sleep)
 {
 	if (is_dead(philo))
 		return ;
-	print_state(philo, "is sleeping\n");
+	print_state(philo, "is sleeping");
 	hit_the_hay(philo, time_to_sleep);
 }
 
@@ -62,6 +61,6 @@ void	thinking(t_philo *philo)
 {
 /* 	if (is_dead(philo))
 		return ; */
-	print_state(philo, "is thinking\n");
+	print_state(philo, "is thinking");
 	//hit_the_hay(philo, 1);
 }
