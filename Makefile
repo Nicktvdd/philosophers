@@ -13,7 +13,7 @@ SRC = main.c mutex.c errors.c utils.c printing.c philos.c governor.c eatsleep.c 
 
 DEP = $(OBJ:.o=.d)
 
-#### -fsanitize=thread -g
+#### -fsanitize=thread
 all: $(NAME)
 
 $(NAME): $(OBJ)

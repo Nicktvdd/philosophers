@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:51:33 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/14 13:22:43 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:17:40 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	governor(t_philo *philos, t_attr *attr)
 	int i;
 
 	i = 0;
-	usleep(1000);//
+	usleep(500);//
 	while (1)
 	{
 		if (dead_philo_check(philos, attr))

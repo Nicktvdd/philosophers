@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:01:59 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/14 13:37:26 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:45:58 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	eating(t_philo *philo, size_t time_to_eat)
 
 void	sleeping(t_philo *philo, size_t time_to_sleep)
 {
-	if (is_dead(philo))
+	if (is_dead(philo)) // philo 1 is dying here?
 		return ;
 	print_state(philo, "is sleeping");
 	hit_the_hay(philo, time_to_sleep);
