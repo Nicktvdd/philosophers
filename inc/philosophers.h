@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:09:50 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/14 13:19:57 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:09:50 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,14 @@ void	philos_init(t_philo *philos, t_attr *attrib, t_mutex *mutex);
 
 /*governor.c*/
 int		governor(t_philo *philos, t_attr *attr);
+int		is_starving(t_philo *philo);
 
 /*philo_run.c*/
 void	*philo_run(void *this);
 
 /* eatsleep.c */
 int		hit_the_hay(t_philo *philo, size_t	sleepytime);
+int		eat_the_hay(t_philo *philo, size_t	eating_time);
 void	eating(t_philo *philo, size_t time_to_eat);
 void	sleeping(t_philo *philo, size_t time_to_sleep);
 void	thinking(t_philo *philo);

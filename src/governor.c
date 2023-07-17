@@ -6,11 +6,18 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:51:33 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/17 11:48:33 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:06:10 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "philosophers.h"
+
+int	is_starving(t_philo *philo)
+{
+	if (get_time_ms() - philo->last_supper >= philo->attr->time_to_die)
+		return (1);
+	return (0);
+}
 
 static void	kill_all(t_philo *philos)
 {
@@ -36,13 +43,14 @@ int	dead_philo_check(t_philo *philos, t_attr *attr)
 		pthread_mutex_lock(philos[i].death);
 		if (&philos[i]) // always true??
 		{
-			if (philos[i].died == 1)
+			if (is_starving(&philos[i]))
 			{
 				printf("dead philo!\n");//
 				pthread_mutex_unlock(philos[i].death);
 				kill_all(philos);
 				printf("%lu ", get_time_ms() - philos[i].attr->start_time);	
 				printf("Philosopher %d is dead.\n", philos[i].id);
+				philos_join(philos);
 				return (1);
 			}
 		}
@@ -57,7 +65,7 @@ int	governor(t_philo *philos, t_attr *attr)
 	int i;
 
 	i = 0;
-	usleep(500);//
+	//usleep(500);//
 	while (1)
 	{
 		if (dead_philo_check(philos, attr))

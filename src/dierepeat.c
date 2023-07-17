@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:01:54 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/17 11:39:43 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:05:09 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,9 @@ int	is_dead(t_philo *philo)
 		printf("%zu deathcheck mid %i\n", get_time_ms() - philo->attr->start_time, philo->id);// */
 	//printf("current time %zu - last supper %zu >= time_to_die %zu\n", get_time_ms(), philo->last_supper, philo->attr->time_to_die);
 	//printf("which is obviously: %zu\n", get_time_ms() - philo->last_supper);
-	if (get_time_ms() - philo->last_supper >= philo->attr->time_to_die)
+	if (philo->died)
 	{
-		philo->died = 1;
 		pthread_mutex_unlock(philo->death);
-		print_death(*philo);
 		return (1);
 	}
 	pthread_mutex_unlock(philo->death);
