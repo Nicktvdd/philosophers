@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 12:54:18 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/17 15:32:57 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 15:49:56 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	attr_set(t_attr *attr, int argc, char **argv)
 		printf("Invalid arguments\n");
 		return (1);
 	}
-		printf("times to die is %zu\n", attr->time_to_die);
 	return (0);
 }
 
