@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 12:54:18 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/17 12:55:28 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 15:32:57 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ int	attr_set(t_attr *attr, int argc, char **argv)
 	if (attr->philo_num <= 0 || attr->time_to_die <= 0
 		|| attr->time_to_eat <= 0 || attr->time_to_sleep <= 0)
 	{
-		printf("Arguments are invalid\n");
+		printf("Invalid arguments\n");
 		return (1);
 	}
+		printf("times to die is %zu\n", attr->time_to_die);
 	return (0);
 }
 
@@ -38,7 +39,7 @@ int	main(int argc, char **argv)
 
 	if (argc < ARG_MIN || argc > ARG_MAX)
 	{
-		printf("Try again, punk.\n");
+		printf("Invalid arguments\n");
 		return (1);
 	}
 	if (attr_set(&attributes, argc, argv))
