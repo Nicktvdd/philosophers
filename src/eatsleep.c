@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:01:59 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/17 12:09:31 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:13:39 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	sleeping(t_philo *philo, size_t time_to_sleep)
 
 void	thinking(t_philo *philo)
 {
-/* 	if (is_dead(philo))
-		return ; */
+	if (philo->died)
+		return ;
 	print_state(philo, "is thinking");
 	//hit_the_hay(philo, 1);
 }

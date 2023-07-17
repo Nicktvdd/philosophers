@@ -50,7 +50,7 @@ int	main(int argc, char **argv)
 	philos_init(philos, &attributes, &mutex);
 	philos_spawn(philos, &mutex.gate);
 	governor(philos, philos->attr);
-	//philos_join(philos);
+	philos_join(philos);
 	if (mutex_destroy(attributes.philo_num, &mutex))
 		return (4);
 	return (0);
