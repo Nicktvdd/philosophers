@@ -6,15 +6,15 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:19:57 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/12 16:16:40 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:58:15 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "philosophers.h"
+#include "philosophers.h"
 
 static int	mutex_array_init(int num_philos, pthread_mutex_t *forks)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < num_philos)
@@ -26,27 +26,26 @@ static int	mutex_array_init(int num_philos, pthread_mutex_t *forks)
 	return (0);
 }
 
-
 int	mutex_init(int num_philos, t_mutex *mutex)
 {
 	if (mutex_array_init(num_philos, mutex->forks))
 	{
-		error_handler("Fork init failed.");
+		printf("Fork init failed.");
 		return (3);
 	}
 	if (mutex_array_init(num_philos, mutex->deaths))
 	{
-		error_handler("Death init failed.");
+		printf("Death init failed.");
 		return (3);
 	}
 	if (pthread_mutex_init(&mutex->gate, NULL) != 0)
 	{
-		error_handler("Gate init failed.");
+		printf("Gate init failed.");
 		return (3);
 	}
 	if (pthread_mutex_init(&mutex->print, NULL) != 0)
 	{
-		error_handler("Print init failed.");
+		printf("Print init failed.");
 		return (3);
 	}
 	return (0);
@@ -70,22 +69,22 @@ int	mutex_destroy(int num_philos, t_mutex *mutex)
 {
 	if (mutex_array_destroy(num_philos, mutex->forks))
 	{
-		error_handler("Mutex destroy failed.");
+		printf("Mutex destroy failed.");
 		return (4);
 	}
 	if (mutex_array_destroy(num_philos, mutex->deaths))
 	{
-		error_handler("Mutex destroy failed.");
+		printf("Mutex destroy failed.");
 		return (4);
 	}
 	if (pthread_mutex_destroy(&mutex->gate) != 0)
 	{
-		error_handler("Mutex destroy failed.");
+		printf("Mutex destroy failed.");
 		return (4);
 	}
 	if (pthread_mutex_destroy(&mutex->print) != 0)
 	{
-		error_handler("Mutex destroy failed.");
+		printf("Mutex destroy failed.");
 		return (4);
 	}
 	return (0);

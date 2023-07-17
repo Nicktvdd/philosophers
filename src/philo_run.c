@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:38:36 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/17 12:38:51 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:56:07 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,13 @@ static void	get_forked(t_philo *philo)
 
 void	*philo_run(void *this)
 {
-	t_philo *philo;
-	
-	philo = (t_philo *)this;
+	t_philo	*philo;
 
+	philo = (t_philo *)this;
 	pthread_mutex_lock(philo->gate);
 	pthread_mutex_unlock(philo->gate);
 	philo->last_supper = philo->attr->start_time;
- 	if (philo->id % 2 == 0)
+	if (philo->id % 2 == 0)
 		hit_the_hay(philo, philo->attr->time_to_eat);
 	while (1)
 	{

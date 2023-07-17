@@ -6,11 +6,11 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:51:33 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/17 12:43:22 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:53:45 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "philosophers.h"
+#include "philosophers.h"
 
 int	is_starving(t_philo *philo)
 {
@@ -35,7 +35,7 @@ static void	kill_all(t_philo *philos)
 
 int	dead_philo_check(t_philo *philos, t_attr *attr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < attr->philo_num)
@@ -47,7 +47,7 @@ int	dead_philo_check(t_philo *philos, t_attr *attr)
 			{
 				pthread_mutex_unlock(philos[i].death);
 				kill_all(philos);
-				printf("%lu ", get_time_ms() - philos[i].attr->start_time);	
+				printf("%lu ", get_time_ms() - philos[i].attr->start_time);
 				printf("%d died\n", philos[i].id);
 				return (1);
 			}
@@ -57,6 +57,7 @@ int	dead_philo_check(t_philo *philos, t_attr *attr)
 	}
 	return (0);
 }
+
 static int	check_eaten(t_philo *philos)
 {
 	int	i;
@@ -87,7 +88,7 @@ int	governor(t_philo *philos, t_attr *attr)
 	while (1)
 	{
 		if (dead_philo_check(philos, attr) || check_eaten(philos))
-			return 1;
+			return (1);
 	}
-	return 0;
+	return (0);
 }

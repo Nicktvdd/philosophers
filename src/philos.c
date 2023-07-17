@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   philos.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tn-denpoof <tn-denpoof@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 18:50:58 by rrask             #+#    #+#             */
-/*   Updated: 2023/06/16 14:13:27 by tn-denpoof         ###   ########.fr       */
+/*   Created: 2023/07/17 12:56:58 by nvan-den          #+#    #+#             */
+/*   Updated: 2023/07/17 12:57:24 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	philos_init(t_philo *philos, t_attr *attrib, t_mutex *mutex) // change to use t_mutex  pthread_mutex_t *forks
+void	philos_init(t_philo *philos, t_attr *attrib, t_mutex *mutex)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < attrib->philo_num)
@@ -31,14 +31,13 @@ void	philos_init(t_philo *philos, t_attr *attrib, t_mutex *mutex) // change to u
 		philos[i].id = i + 1;
 		philos[i].died = 0;
 		philos[i].times_eaten = 0;
-
 		i++;
 	}
 }
 
 void	philos_spawn(t_philo *philos, pthread_mutex_t *gate)
 {
-	int i;
+	int	i;
 
 	(void)gate;
 	i = 0;
@@ -56,7 +55,7 @@ void	philos_spawn(t_philo *philos, pthread_mutex_t *gate)
 
 void	philos_join(t_philo *philos)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < philos->attr->philo_num)

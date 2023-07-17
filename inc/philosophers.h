@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:09:50 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/17 12:44:05 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 13:00:00 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 # define MAX_PHILO 250
 # include <pthread.h>
 # include <stdio.h>
-# include <unistd.h>
 # include <sys/time.h>
+# include <unistd.h>
 
 typedef struct s_attr
 {
-	size_t		start_time;
-	int			philo_num;
-	size_t		time_to_die;
-	size_t		time_to_eat;
-	size_t		time_to_sleep;
-	int			times_must_eat;
+	size_t			start_time;
+	int				philo_num;
+	size_t			time_to_die;
+	size_t			time_to_eat;
+	size_t			time_to_sleep;
+	int				times_must_eat;
 }					t_attr;
 
 typedef struct s_philo
@@ -48,43 +48,43 @@ typedef struct s_philo
 typedef struct s_mutex
 {
 	pthread_mutex_t	forks[MAX_PHILO];
-	pthread_mutex_t deaths[MAX_PHILO];
+	pthread_mutex_t	deaths[MAX_PHILO];
 	pthread_mutex_t	gate;
 	pthread_mutex_t	print;
-}				t_mutex;
+}					t_mutex;
 
 /*philos.c*/
-void	philos_join(t_philo *philos);
-void	philos_spawn(t_philo *philos, pthread_mutex_t *gate);
-void	philos_init(t_philo *philos, t_attr *attrib, t_mutex *mutex);
+void				philos_join(t_philo *philos);
+void				philos_spawn(t_philo *philos, pthread_mutex_t *gate);
+void				philos_init(t_philo *philos, t_attr *attrib,
+						t_mutex *mutex);
 
 /*governor.c*/
-int		governor(t_philo *philos, t_attr *attr);
-int		is_starving(t_philo *philo);
+int					governor(t_philo *philos, t_attr *attr);
+int					is_starving(t_philo *philo);
 
 /*philo_run.c*/
-void	*philo_run(void *this);
+void				*philo_run(void *this);
 
 /* eatsleep.c */
-int		hit_the_hay(t_philo *philo, size_t	sleepytime);
-int		eat_the_hay(t_philo *philo, size_t	eating_time);
-void	eating(t_philo *philo, size_t time_to_eat);
-void	sleeping(t_philo *philo, size_t time_to_sleep);
-void	thinking(t_philo *philo);
+int					hit_the_hay(t_philo *philo, size_t sleepytime);
+int					eat_the_hay(t_philo *philo, size_t eating_time);
+void				eating(t_philo *philo, size_t time_to_eat);
+void				sleeping(t_philo *philo, size_t time_to_sleep);
+void				thinking(t_philo *philo);
 
 /*dierepeat.c*/
-size_t	get_time_ms(void);
-int		is_dead(t_philo *philo);
+size_t				get_time_ms(void);
+int					is_dead(t_philo *philo);
 
 /*utils.c*/
-int	ft_atoi(const char *str);
+int					ft_atoi(const char *str);
 
 /*mutex.c*/
-int		mutex_init(int num_philos, t_mutex *mutex);
-int		mutex_destroy(int num_philos, t_mutex *mutex);
+int					mutex_init(int num_philos, t_mutex *mutex);
+int					mutex_destroy(int num_philos, t_mutex *mutex);
 
 /*printing.c*/
-void	print_death(t_philo philo);
-void	print_state(t_philo *philo, char *string);
+void				print_state(t_philo *philo, char *string);
 
 #endif

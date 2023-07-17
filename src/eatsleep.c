@@ -6,24 +6,23 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:01:59 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/17 12:37:39 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:52:58 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	hit_the_hay(t_philo *philo, size_t	sleepytime)
+int	hit_the_hay(t_philo *philo, size_t sleepytime)
 {
 	size_t	the_time;
 
 	the_time = get_time_ms();
-	while (!is_dead(philo)
-			&& (get_time_ms() - the_time) < sleepytime)
+	while (!is_dead(philo) && (get_time_ms() - the_time) < sleepytime)
 		usleep(500);
 	return (0);
 }
 
-int	eat_the_hay(t_philo *philo, size_t	eating_time)
+int	eat_the_hay(t_philo *philo, size_t eating_time)
 {
 	size_t	the_time;
 
@@ -31,7 +30,7 @@ int	eat_the_hay(t_philo *philo, size_t	eating_time)
 	while ((get_time_ms() - the_time) < eating_time)
 	{
 		usleep(500);
-		if(philo->died)
+		if (philo->died)
 			return (1);
 	}
 	return (0);

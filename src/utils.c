@@ -6,11 +6,11 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:18 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/12 16:21:54 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 13:00:32 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "philosophers.h"
+#include "philosophers.h"
 
 int	ft_isdigit(int c)
 {
@@ -54,4 +54,14 @@ int	ft_atoi(const char *str)
 			return (ft_overflow(min));
 	}
 	return ((int)res * min);
+}
+
+void	print_state(t_philo *philo, char *string)
+{
+	size_t	lapsed_time;
+
+	pthread_mutex_lock(philo->print);
+	lapsed_time = get_time_ms() - philo->attr->start_time;
+	printf("%zu %d %s\n", lapsed_time, philo->id, string);
+	pthread_mutex_unlock(philo->print);
 }

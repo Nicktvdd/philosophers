@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:01:54 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/17 12:36:50 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:51:53 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,3 @@ int	is_dead(t_philo *philo)
 	pthread_mutex_unlock(philo->death);
 	return (0);
 }
-
