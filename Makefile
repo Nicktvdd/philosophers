@@ -7,7 +7,7 @@ OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 OBJ_DIR = obj
 
 INCLUDES = -Iinc
-CFLAGS = -Wall -Wextra -Werror -MMD -g
+CFLAGS = -Wall -Wextra -Werror -MMD -g 
 
 SRC = main.c mutex.c utils.c philos.c governor.c eatsleep.c dierepeat.c philo_run.c
 
