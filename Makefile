@@ -13,7 +13,7 @@ SRC = main.c mutex.c utils.c philos.c governor.c eatsleep.c dierepeat.c philo_ru
 
 DEP = $(OBJ:.o=.d)
 
-#### 
+####  
 all: $(NAME)
 
 $(NAME): $(OBJ)
