@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 15:51:33 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/17 12:25:46 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:43:22 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,14 @@ int	dead_philo_check(t_philo *philos, t_attr *attr)
 	while (i < attr->philo_num)
 	{
 		pthread_mutex_lock(philos[i].death);
-		if (&philos[i]) // always true??
+		if (&philos[i])
 		{
 			if (is_starving(&philos[i]))
 			{
-				printf("dead philo!\n");//
 				pthread_mutex_unlock(philos[i].death);
 				kill_all(philos);
 				printf("%lu ", get_time_ms() - philos[i].attr->start_time);	
-				printf("Philosopher %d is dead.\n", philos[i].id);
-				//philos_join(philos);
+				printf("%d died\n", philos[i].id);
 				return (1);
 			}
 		}

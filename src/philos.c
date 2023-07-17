@@ -62,7 +62,6 @@ void	philos_join(t_philo *philos)
 	while (i < philos->attr->philo_num)
 	{
 		pthread_join(philos[i].thread, NULL);
-		printf("Philosopher %d has been terminated.\n", i+1);
 		i++;
 	}
 }

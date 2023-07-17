@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:01:59 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/17 12:14:14 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:37:39 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	eat_the_hay(t_philo *philo, size_t	eating_time)
 	{
 		usleep(500);
 		if(philo->died)
-			return (1);//
+			return (1);
 	}
 	return (0);
 }
@@ -50,12 +50,11 @@ void	eating(t_philo *philo, size_t time_to_eat)
 	pthread_mutex_unlock(philo->death);
 	print_state(philo, "is eating");
 	eat_the_hay(philo, time_to_eat);
-	printf("%zu Philo %i has eaten %i times\n", get_time_ms() - philo->attr->start_time, philo->id, philo->times_eaten);
 }
 
 void	sleeping(t_philo *philo, size_t time_to_sleep)
 {
-	if (is_dead(philo)) // philo 1 is dying here?
+	if (is_dead(philo))
 		return ;
 	print_state(philo, "is sleeping");
 	hit_the_hay(philo, time_to_sleep);

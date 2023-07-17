@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:38:36 by nvan-den          #+#    #+#             */
-/*   Updated: 2023/07/14 14:34:39 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:38:51 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	get_forked(t_philo *philo)
 	if (is_dead(philo))
 		return ;
 	pthread_mutex_lock(philo->r_fork);
-	print_state(philo, "has taken a right fork");
+	print_state(philo, "has taken a fork");
 	if (philo->attr->philo_num == 1)
 	{
 		hit_the_hay(philo, philo->attr->time_to_die + 1);
@@ -30,7 +30,7 @@ static void	get_forked(t_philo *philo)
 		return ;
 	}
 	pthread_mutex_lock(philo->l_fork);
-	print_state(philo, "has taken a left fork");
+	print_state(philo, "has taken a fork");
 	eating(philo, philo->attr->time_to_eat);
 	pthread_mutex_unlock(philo->r_fork);
 	pthread_mutex_unlock(philo->l_fork);
@@ -44,16 +44,13 @@ void	*philo_run(void *this)
 
 	pthread_mutex_lock(philo->gate);
 	pthread_mutex_unlock(philo->gate);
-	philo->last_supper = philo->attr->start_time;//
-	//printf("last supper %zu\n", philo->last_supper);
-	//think here
+	philo->last_supper = philo->attr->start_time;
  	if (philo->id % 2 == 0)
 		hit_the_hay(philo, philo->attr->time_to_eat);
 	while (1)
 	{
 		if (is_dead(philo))
 			return (this);
-		//printf("hi from %i\n", philo->id);//
 		get_forked(philo);
 		sleeping(philo, philo->attr->time_to_sleep);
 		thinking(philo);

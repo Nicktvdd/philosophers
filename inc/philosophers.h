@@ -6,7 +6,7 @@
 /*   By: nvan-den <nvan-den@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:09:50 by rrask             #+#    #+#             */
-/*   Updated: 2023/07/17 12:09:50 by nvan-den         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:44:05 by nvan-den         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,6 @@ int		is_dead(t_philo *philo);
 
 /*utils.c*/
 int	ft_atoi(const char *str);
-
-/*errors.c*/
-void	error_handler(char *str);
 
 /*mutex.c*/
 int		mutex_init(int num_philos, t_mutex *mutex);
