@@ -23,13 +23,13 @@ This project originated as a collaborative endeavor, with contributions from the
 
 ### Installation
 
-1. Clone the Minishell repository:
+1. Clone the Philosophers repository:
 
 ```shell
 git clone https://github.com/Nicktvdd/philosophers.git
 ```
 
-2. Build the Minishell executable:
+2. Build the Philosophers executable:
 
  ```
 cd philo
@@ -38,7 +38,7 @@ make
 
 ## Usage
 
-Run Minishell:
+Run Philosophers:
 ```
 ./philo [Number of philosophers] [time to die] [time to eat] [time to sleep] (optional: [times must eat])
 ```
