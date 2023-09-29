@@ -26,13 +26,13 @@ This project originated as a collaborative endeavor, with contributions from the
 1. Clone the Minishell repository:
 
 ```shell
-git clone https://github.com/Nicktvdd/minishell.git
+git clone https://github.com/Nicktvdd/philosophers.git
 ```
 
 2. Build the Minishell executable:
 
  ```
-cd minishell
+cd philo
 make
  ```
 
@@ -40,8 +40,17 @@ make
 
 Run Minishell:
 ```
-./minishell
+./philo [Number of philosophers] [time to die] [time to eat] [time to sleep] (optional: [times must eat])
 ```
+Examples:
+```
+./philo 1 800 200 200
+./philo 5 800 200 200
+./philo 1 800 200 200 7
+./philo 4 410 200 200
+./philo 4 300 200 100
+```
+Only the first and the last should die, the others should live on forever (depending on hardware functioning). Testing with more that 200 philosophers is not recommended.
 
 # Contact
 
