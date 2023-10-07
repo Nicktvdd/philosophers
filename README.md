@@ -4,7 +4,7 @@ In the realm of philosophy, a timeless ritual unfolds: Eat, Sleep, Spaghetti, Re
 
 ## Introduction
 
-This project originated as a collaborative endeavor, with contributions from the talented minds of [Teemu](https://github.com/Stte), [Jun](https://github.com/composerjunhee), and [Rasmus](https://github.com/RushMaverick) and me. We embarked on a collective journey to tackle the challenge at hand. At the finish, I refined the codebase and reshaped the functions to align with my coding style.
+This project originated as a collaborative endeavor, with contributions from the talented minds of [Teemu](https://github.com/Stte), [Jun](https://github.com/composerjunhee), [Rasmus](https://github.com/RushMaverick) and me. We embarked on a collective journey to tackle the challenge at hand. At the finish, I refined the codebase and reshaped the functions to align with my coding style.
 
 ## Key Concepts
 
